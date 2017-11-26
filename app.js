@@ -3,20 +3,11 @@ var app = express()
 
 // Build Your Route Here
 const path = require('index');
-app.get('/', function(req, resp){
-  const html = `
-    <!doctype html>
-    <html>
-      <head>
-        <title>Let's Use EJS</title>
-      </head>
-      <body>
-        <h1>Learning To Use EJS</h1>
-      </body>
-    </html>
-  `
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
-  resp.send(html)
+app.get('/', function(req, resp){
+  resp.render('firstEJSTemplate')
 })
 
 module.exports = app
